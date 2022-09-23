@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
+import { config } from "../../App";
 import { StyledFab, StyledMusicPlayer } from "../../CustomStyle";
 import Header from "../Header/Header";
 import VideoCard from "../VideoCard/VideoCard";
@@ -24,7 +25,7 @@ function VideoPlayer() {
   }, [ID]);
 
   const getAllVideos = async () => {
-    const url = `${process.env.REACT_APP_BASE_URL}/videos`;
+    const url = `${config.endpoint}/videos`;
     // console.log(url);
     try {
       const response = await axios.get(url);
@@ -37,7 +38,7 @@ function VideoPlayer() {
   const updateViewCount = async () => {
     try {
       const response = await axios.patch(
-        `${process.env.REACT_APP_BASE_URL}/videos/${ID}/views`
+        `${config.endpoint}/videos/${ID}/views`
       );
       if (response.status === 204) {
         console.log(response);
@@ -51,7 +52,7 @@ function VideoPlayer() {
     try {
       // console.log(ID);
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/videos/${ID}`
+        `${config.endpoint}/videos/${ID}`
       );
       // console.log(response.data);
       if (response.status === 200) {
@@ -76,7 +77,7 @@ function VideoPlayer() {
     };
     try {
       const response = await axios.patch(
-        `${process.env.REACT_APP_BASE_URL}/videos/${ID}/votes`,
+        `${config.endpoint}/videos/${ID}/votes`,
         data
       );
       if (response.status === 204) {

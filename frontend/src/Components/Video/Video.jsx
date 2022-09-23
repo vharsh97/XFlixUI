@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Button, Grid } from "@mui/material";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import { config } from "../../App";
 import Search from "../Search/Search";
 import Header from "../Header/Header";
 import GenerePanel from "../GenerePanel/GenerePanel";
@@ -21,7 +22,7 @@ function Video() {
   }, []);
 
   const getVideos = async () => {
-    const url = `${process.env.REACT_APP_BASE_URL}/videos`;
+    const url = `${config.endpoint}/videos`;
     // console.log(url);
     try {
       const response = await axios.get(url);
@@ -37,7 +38,7 @@ function Video() {
     setVideoGenere(myGenere);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/videos?genres=${myGenere}`
+        `${config.endpoint}/videos?genres=${myGenere}`
       );
       // console.log(response.data);
       setVideos(response.data.videos);
@@ -56,7 +57,7 @@ function Video() {
       // console.log(encodeURIComponent(rating));
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/videos?contentRating=${encodedRating}`
+          `${config.endpoint}/videos?contentRating=${encodedRating}`
         );
         // console.log(response.data);
         setVideos(response.data.videos);
@@ -73,7 +74,7 @@ function Video() {
     } else {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/videos?sortBy=${option}`
+          `${config.endpoint}/videos?sortBy=${option}`
         );
         // console.log(response.data);
         setVideos(response.data.videos);
@@ -91,9 +92,9 @@ function Video() {
     }
     let searchQuery = "";
     if (searchText !== "" && videoGenere !== "" && contentRating !== "") {
-      searchQuery = `${process.env.REACT_APP_BASE_URL}/videos?title=${searchText}&genres=${videoGenere}&contentRating=${contentRating}`;
+      searchQuery = `${config.endpoint}/videos?title=${searchText}&genres=${videoGenere}&contentRating=${contentRating}`;
     } else {
-      searchQuery = `${process.env.REACT_APP_BASE_URL}/videos?title=${searchText}`;
+      searchQuery = `${config.endpoint}/videos?title=${searchText}`;
     }
     try {
       const response = await axios.get(searchQuery);

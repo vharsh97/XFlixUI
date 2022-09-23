@@ -6,9 +6,10 @@ import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import DatePicker from "react-datepicker";
 import { useSnackbar } from "notistack";
+import axios from "axios";
+import { config } from "../../App";
 import { StyledModalBox } from "../../CustomStyle";
 import "./UploadVideo.css";
-import axios from "axios";
 
 function UploadVideo(props) {
   const monthArray = [
@@ -73,7 +74,7 @@ function UploadVideo(props) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/videos`,
+        `${config.endpoint}/videos`,
         { data }
       );
       if (response.status === 201) {
