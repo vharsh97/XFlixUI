@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@mui/system";
+import { SnackbarProvider } from "notistack";
 import "react-datepicker/dist/react-datepicker.css";
 import theme from "./theme";
 import "./index.css";
@@ -12,7 +13,16 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ThemeProvider theme={theme}>
-        <App />
+        <SnackbarProvider
+          maxSnack={1}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          preventDuplicate
+        >
+          <App />
+        </SnackbarProvider>
       </ThemeProvider>
     </Router>
   </React.StrictMode>,
