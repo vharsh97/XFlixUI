@@ -1,0 +1,9 @@
+.search-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  background: #313131;
+  color: rgba(150, 150, 150, 0.87);
+}

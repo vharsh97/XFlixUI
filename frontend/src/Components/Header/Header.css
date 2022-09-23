@@ -1,0 +1,11 @@
+.header {
+  margin: 0;
+  padding: 1rem 1rem;
+  height: auto;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  background: #313131;
+}
+
+.header-title {
+  cursor: pointer;
+}

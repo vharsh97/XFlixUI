@@ -1,0 +1,17 @@
+.player-section {
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.video-frame {
+  width: 90vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 60vh !important;
+  border: none;
+  border-radius: 10px;
+}
