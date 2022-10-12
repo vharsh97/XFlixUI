@@ -73,10 +73,7 @@ function UploadVideo(props) {
     if (!validateInput(data)) return;
 
     try {
-      const response = await axios.post(
-        `${config.endpoint}/videos`,
-        { data }
-      );
+      const response = await axios.post(`${config.endpoint}/videos`, { data });
       if (response.status === 201) {
         enqueueSnackbar("video uploaded successfully", {
           variant: "success",
@@ -100,32 +97,44 @@ function UploadVideo(props) {
   const validateInput = (data) => {
     let check = true;
     if (data.videoLink === "" && check) {
-      enqueueSnackbar("Video Link is a required field", { variant: "warning" });
+      enqueueSnackbar("Video Link is a required field", {
+        variant: "warning",
+        autoHideDuration: 1000,
+      });
       check = false;
     }
     if (data.thumbnailImgLink === "" && check) {
       enqueueSnackbar("Thumbnail Image Link is a required field", {
         variant: "warning",
+        autoHideDuration: 1000,
       });
       check = false;
     }
     if (data.title === "" && check) {
-      enqueueSnackbar("Title is a required field", { variant: "warning" });
+      enqueueSnackbar("Title is a required field", {
+        variant: "warning",
+        autoHideDuration: 1000,
+      });
       check = false;
     }
     if (data.genre === "" && check) {
-      enqueueSnackbar("Genre is a required field", { variant: "warning" });
+      enqueueSnackbar("Genre is a required field", {
+        variant: "warning",
+        autoHideDuration: 1000,
+      });
       check = false;
     }
     if (data.ageGroup === "" && check) {
       enqueueSnackbar("Suitable age group for the clip is a required field", {
         variant: "warning",
+        autoHideDuration: 1000,
       });
       check = false;
     }
     if (data.publishDate === "" && check) {
       enqueueSnackbar("Upload and Publish Date is a required field", {
         variant: "warning",
+        autoHideDuration: 1000,
       });
       check = false;
     }
